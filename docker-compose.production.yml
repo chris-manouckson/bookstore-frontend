@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  bookstore-frontend:
+    container_name: bookstore-frontend-production
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 8000:80
+    stdin_open: true
+    tty: true
