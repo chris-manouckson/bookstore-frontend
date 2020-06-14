@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 
-import Layout from '../../layout';
-import SignupForm from '../../signup-form';
+import Layout from '../../components/layout';
+import SignupForm from '../../components/signup-form';
 
 import styles from './signup.module.scss';
 

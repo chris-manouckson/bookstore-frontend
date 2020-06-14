@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 
-import Layout from '../../layout';
-import ProfileForm from '../../profile-form';
+import Layout from '../../components/layout';
+import ProfileForm from '../../components/profile-form';
 
 import styles from './profile.module.scss';
 

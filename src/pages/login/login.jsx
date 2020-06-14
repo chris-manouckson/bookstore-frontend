@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 
-import Layout from '../../layout';
-import LoginForm from '../../login-form';
+import Layout from '../../components/layout';
+import LoginForm from '../../components/login-form';
 
 import styles from './login.module.scss';
 
