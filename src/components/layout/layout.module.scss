@@ -1,6 +1,106 @@
 @import '../../styles/global.scss';
 
+$header-height: 72px;
+$footer-height: 72px;
+
 .layout {
-  // TODO: write appropriate
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding-top: $header-height;
   background-color: $color-1;
+  font-family: $font-family-text;
+
+  &Header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    height: $header-height;
+    background-color: $color-4;
+
+    &_section {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      padding: 0 24px;
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+
+    &Brand {
+      font-size: $font-size-large;
+      font-weight: bold;
+      color: $color-1;
+
+      &_name {
+        text-decoration: none;
+        color: $color-1;
+      }
+    }
+
+    &Auth {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &_link {
+        margin-right: 24px;
+        font-size: $font-size-medium;
+        font-weight: bold;
+        text-decoration: none;
+        color: $color-1;
+
+        &:last-child {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 72px;
+          height: 40px;
+          margin-right: 0;
+          border: none;
+          border-radius: 12px;
+          color: $color-4;
+          background-color: $color-1;
+        }
+      }
+    }
+  }
+
+  &Footer {
+    display: flex;
+    justify-content: space-between;
+    height: $footer-height;
+    border-top: 1px solid $color-2;
+    background-color: $color-2;
+
+    &_section {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 24px;
+    }
+
+    &CopyRight {
+      color: $color-1;
+    }
+
+    &LinkList {
+      &_item {
+        margin-right: 24px;
+        text-decoration: none;
+        color: $color-1;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
