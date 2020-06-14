@@ -5,6 +5,7 @@ import {
   Home,
   Login,
   Signup,
+  Profile,
   NotFound,
 } from './pages';
 
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path="/profile" component={Profile} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

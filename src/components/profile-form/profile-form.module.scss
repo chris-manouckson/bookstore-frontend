@@ -1,0 +1,31 @@
+@import '../../styles/global.scss';
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 360px;
+  padding: 36px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px -4px $color-2;
+
+  &_title {
+    margin-bottom: 24px;
+    font-size: $font-size-large;
+    color: $color-2;
+  }
+
+  &InputContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &_input {
+      width: calc(50% - 6px);
+
+      &__fullWidth {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ const TextField = (props) => {
     type,
     placeholder,
     errorMessage,
+    isDisabled,
   } = props;
 
   const handleChange = useCallback((event) => {
@@ -31,6 +32,7 @@ const TextField = (props) => {
         onChange={handleChange}
         type={type}
         placeholder={placeholder}
+        disabled={isDisabled}
         className={cx('textField_input', {
           textField_input__invalid: isValid === false,
         })}
@@ -51,6 +53,7 @@ TextField.defaultProps = {
   type: inputTypes.text.text,
   placeholder: '',
   errorMessage: '',
+  isDisabled: false,
 };
 
 TextField.propTypes = {
@@ -60,6 +63,7 @@ TextField.propTypes = {
   isValid: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf([null])]),
   type: PropTypes.oneOf(Object.values(inputTypes.text)),
   placeholder: PropTypes.string,
+  isDisabled: PropTypes.bool,
   errorMessage: PropTypes.string,
 };
 
