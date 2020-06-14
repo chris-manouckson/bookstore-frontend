@@ -1,1 +1,1 @@
-// TODO: export constants
+export { default as propTypes } from './prop-types';

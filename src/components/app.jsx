@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Layout from './layout';
+
 const App = () => (
-  <div>
+  <Layout>
     <h1>Welcome to Bookstore!</h1>
-  </div>
+  </Layout>
 );
 
 export default App;

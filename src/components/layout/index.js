@@ -1,1 +1,1 @@
-// TODO: export layout component
+export { default } from './layout';

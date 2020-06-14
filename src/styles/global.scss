@@ -1,0 +1,26 @@
+// INFO: font sizes
+$font-size-small-extra: 8px;
+$font-size-small: 12px;
+$font-size-medium: 16px;
+$font-size-large: 24px;
+$font-size-large-extra: 72px;
+
+// INFO: color scheme
+$color-1: #FBFBFB;
+$color-2: #2E2532;
+$color-3: #2E2532;
+$color-4: #9E4770;
+$color-5: #631D76;
+
+// INFO: font families
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans:wght@400;700&display=swap');
+
+$font-family-title: 'Black Han Sans', sans-serif;
+$font-family-text: 'Noto Sans', sans-serif;
+
+// INFO: overall styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
