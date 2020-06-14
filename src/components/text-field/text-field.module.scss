@@ -1,0 +1,32 @@
+@import '../../styles/global.scss';
+
+.textField {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+
+  &_input {
+    flex: 1;
+    min-height: 40px;
+    padding-left: 12px;
+    border: 1px solid $color-2;
+    border-radius: 8px;
+
+    &__invalid {
+      border: 1px solid $color-4;
+      box-shadow: 0 0 2px 0 $color-4;
+    }
+  }
+
+  &_errorMessage {
+    height: 12px;
+    font-size: $font-size-small;
+    color: $color-4;
+
+    &__hidden {
+      visibility: hidden;
+    }
+  }
+}
