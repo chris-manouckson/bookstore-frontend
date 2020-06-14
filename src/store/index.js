@@ -1,1 +1,1 @@
-// TODO: export app-level state manager (redux) store
+export { default, persistor } from './store';
