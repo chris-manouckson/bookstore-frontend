@@ -1,11 +1,19 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Layout from './layout';
+import {
+  Home,
+  NotFound,
+} from './pages';
 
 const App = () => (
-  <Layout>
-    <h1>Welcome to Bookstore!</h1>
-  </Layout>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      {/* TODO: add remaining routes */}
+      <Route component={NotFound} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default App;
