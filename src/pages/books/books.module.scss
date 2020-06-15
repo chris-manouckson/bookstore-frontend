@@ -1,0 +1,18 @@
+@import '../../styles/global.scss';
+
+.books {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px;
+
+  &_title {
+    margin-bottom: 24px;
+    font-size: $font-size-large-extra;
+    text-align: center;
+  }
+
+  &_searchFieldContainer {
+    margin-bottom: 48px;
+  }
+}

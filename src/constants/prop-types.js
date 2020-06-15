@@ -15,6 +15,26 @@ const propTypes = {
       email: PropTypes.string.isRequired,
     }),
   ]),
+  // INFO: book related prop types
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    isbn: PropTypes.number,
+    description: PropTypes.string,
+    prisce: PropTypes.shape({
+      amount: PropTypes.number,
+      // TODO: move currencies to constants
+      currency: PropTypes.oneOf(['$']),
+    }),
+    author: PropTypes.oneOfType([
+      PropTypes.shape({
+        id: PropTypes.number,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+      }),
+      PropTypes.oneOf([null]),
+    ]),
+  }),
 };
 
 export default propTypes;
