@@ -52,6 +52,11 @@
       font-family: $font-family-title;
     }
 
+    &_link {
+      color: $color-1;
+      text-decoration: none;
+    }
+
     &_author {
       margin-bottom: 12px;
       font-size: $font-size-medium;

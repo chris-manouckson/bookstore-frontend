@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import { propTypes } from '../../constants';
@@ -16,7 +17,9 @@ const BookContainerItem = (props) => {
         {book.author ? `${book.author.firstName} ${book.author.lastName}` : 'Unknown'}
       </p>
       <h3 className={cx('bookContainerItem_title')}>
-        {book.title}
+        <Link to={`books/${book.id}`} className={cx('bookContainerItem_link')}>
+          {book.title}
+        </Link>
       </h3>
 
       <p className={cx('bookContainerItem_description')}>

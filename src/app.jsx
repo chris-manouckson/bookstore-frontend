@@ -7,6 +7,7 @@ import {
   Signup,
   Profile,
   Books,
+  BookDetails,
   NotFound,
 } from './pages';
 
@@ -18,6 +19,7 @@ const App = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/books" component={Books} />
+      <Route exact path="/books/:bookId" component={BookDetails} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
