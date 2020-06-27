@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import { propTypes } from '../../constants';
@@ -8,8 +8,15 @@ import styles from './layout.module.scss';
 
 const cx = classnames.bind(styles);
 
+const links = [
+  { to: '/books', label: 'Books' },
+  { to: '/authors', label: 'Authors' },
+];
+
 const LayoutHeader = (props) => {
   const { currentUser } = props;
+
+  const location = useLocation();
 
   const userIsLoggedIn = useMemo(() => !!currentUser, [currentUser]);
 
@@ -18,8 +25,22 @@ const LayoutHeader = (props) => {
       <section className={cx('layoutHeader_section')}>
         <div className={cx('layoutHeaderBrand')}>
           <Link to="/" className={cx('layoutHeaderBrand_name')}>
-            Bookstore
+            BOOKSTORE
           </Link>
+        </div>
+
+        <div className={cx('layoutHeaderLinks')}>
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={cx('layoutHeaderLinks_link', {
+                layoutHeaderLinks_link__active: location.pathname === link.to,
+              })}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </section>
 
