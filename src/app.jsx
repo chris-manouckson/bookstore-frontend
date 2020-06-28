@@ -8,6 +8,8 @@ import {
   Profile,
   Books,
   BookDetails,
+  Authors,
+  AuthorDetails,
   NotFound,
 } from './pages';
 
@@ -20,6 +22,8 @@ const App = () => (
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/books" component={Books} />
       <Route exact path="/books/:bookId" component={BookDetails} />
+      <Route exact path="/authors" component={Authors} />
+      <Route exact path="/authors/:authorId" component={AuthorDetails} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

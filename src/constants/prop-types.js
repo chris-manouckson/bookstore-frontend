@@ -27,13 +27,16 @@ const propTypes = {
       currency: PropTypes.oneOf(['$']),
     }),
     author: PropTypes.oneOfType([
-      PropTypes.shape({
-        id: PropTypes.number,
-        firstName: PropTypes.string,
-        lastName: PropTypes.string,
-      }),
       PropTypes.oneOf([null]),
     ]),
+  }),
+  // INFO: author related prop types
+  author: PropTypes.shape({
+    id: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
   }),
 };
 
