@@ -10,6 +10,16 @@ import {
   authGetAccessTokenSuccessSaga,
   authGetAccessTokenFailureSaga,
 } from './auth-get-access-token';
+import {
+  authLoginPendingSaga,
+  authLoginSuccessSaga,
+  authLoginFailureSaga,
+} from './auth-login';
+import {
+  authGetCurrentUserPendingSaga,
+  authGetCurrentUserSuccessSaga,
+  authGetCurrentUserFailureSaga,
+} from './auth-get-current-user';
 
 export default function* () {
   yield all([
@@ -19,5 +29,11 @@ export default function* () {
     authGetAccessTokenPendingSaga(),
     authGetAccessTokenSuccessSaga(),
     authGetAccessTokenFailureSaga(),
+    authLoginPendingSaga(),
+    authLoginSuccessSaga(),
+    authLoginFailureSaga(),
+    authGetCurrentUserPendingSaga(),
+    authGetCurrentUserSuccessSaga(),
+    authGetCurrentUserFailureSaga(),
   ]);
 }

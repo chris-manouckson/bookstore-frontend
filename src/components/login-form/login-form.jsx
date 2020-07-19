@@ -1,6 +1,12 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, {
+  useEffect, useState, useCallback, useMemo,
+} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
+import { selectRequestStatus } from '../../store/selectors';
+import { authLoginPending } from '../../store/actions';
 import { inputTypes, errorMessages } from '../../constants';
 import TextField from '../text-field';
 
@@ -9,10 +15,18 @@ import styles from './login-form.module.scss';
 const cx = classnames.bind(styles);
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const { isLoading, error } = useSelector(selectRequestStatus('auth', 'login'));
+
   const [formData, setFormData] = useState({
     email: { value: '', isValid: null, errorMessage: '' },
     password: { value: '', isValid: null, errorMessage: '' },
   });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const formDataIsValid = useMemo(
     () => formData.email.isValid && formData.password.isValid,
@@ -50,10 +64,23 @@ const LoginForm = () => {
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
-    // TODO: dispatch login user action
-    // eslint-disable-next-line no-console
-    console.log(formData);
-  }, [formData]);
+    const requestData = Object.keys(formData).reduce((currentRequestData, fieldName) => ({
+      ...currentRequestData,
+      [fieldName]: formData[fieldName].value,
+    }), {});
+
+    dispatch(authLoginPending(requestData));
+
+    setIsSubmitted(true);
+  }, [formData, dispatch]);
+
+  useEffect(() => {
+    if (!isSubmitted) return;
+
+    if (!isLoading && !error) {
+      history.push('/profile');
+    }
+  }, [isSubmitted, isLoading, error, history]);
 
   return (
     <form onSubmit={handleSubmit} className={cx('loginForm')}>

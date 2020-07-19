@@ -3,8 +3,8 @@ import { createRequestStatus } from '../../utils';
 
 const initialState = {
   signupRequestStatus: createRequestStatus(),
-  getAccessTokenStatus: createRequestStatus(),
-  // loginRequestStatus: createRequestStatus(),
+  getAccessTokenRequestStatus: createRequestStatus(),
+  loginRequestStatus: createRequestStatus(),
   // getCurrentUserStatus: createRequestStatus(),
 };
 
@@ -29,17 +29,33 @@ const auth = (state = initialState, action) => {
     case actionTypes.AUTH_GET_ACCESS_TOKEN_PENDING:
       return {
         ...state,
-        getAccessTokenStatus: createRequestStatus({ isLoading: true }),
+        getAccessTokenRequestStatus: createRequestStatus({ isLoading: true }),
       };
     case actionTypes.AUTH_GET_ACCESS_TOKEN_SUCCESS:
       return {
         ...state,
-        getAccessTokenStatus: createRequestStatus(),
+        getAccessTokenRequestStatus: createRequestStatus(),
       };
     case actionTypes.AUTH_GET_ACCESS_TOKEN_FAILURE:
       return {
         ...state,
-        getAccessTokenStatus: createRequestStatus({ error: action.error }),
+        getAccessTokenRequestStatus: createRequestStatus({ error: action.error }),
+      };
+
+    case actionTypes.AUTH_LOGIN_PENDING:
+      return {
+        ...state,
+        loginRequestStatus: createRequestStatus({ isLoading: true }),
+      };
+    case actionTypes.AUTH_LOGIN_SUCCESS:
+      return {
+        ...state,
+        loginRequestStatus: createRequestStatus(),
+      };
+    case actionTypes.AUTH_LOGIN_FAILURE:
+      return {
+        ...state,
+        loginRequestStatus: createRequestStatus({ error: action.error }),
       };
 
     default:
