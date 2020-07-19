@@ -2,7 +2,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { requestAuthGetAccessToken } from '../../api';
-import { authGetAccessTokenSuccess, authGetAccessTokenFailure } from '../actions';
+import {
+  authGetAccessTokenSuccess,
+  authGetAccessTokenFailure,
+  authLogout,
+} from '../actions';
 import {
   AUTH_GET_ACCESS_TOKEN_PENDING,
   AUTH_GET_ACCESS_TOKEN_SUCCESS,
@@ -30,6 +34,8 @@ export function* authGetAccessTokenSuccessSaga() {
 export function* authGetAccessTokenFailureSaga() {
   yield takeLatest(AUTH_GET_ACCESS_TOKEN_FAILURE, function* (action) {
     const { error } = action;
+
+    yield put(authLogout());
 
     if (error.response && error.response.message) {
       // TODO: dispatch push alert action

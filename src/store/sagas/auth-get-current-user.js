@@ -2,7 +2,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { requestAuthGetCurrentUser } from '../../api';
-import { authGetCurrentUserSuccess, authGetCurrentUserFailure } from '../actions';
+import {
+  authGetCurrentUserSuccess,
+  authGetCurrentUserFailure,
+  authGetAccessTokenPending,
+} from '../actions';
 import {
   AUTH_GET_CURRENT_USER_PENDING,
   AUTH_GET_CURRENT_USER_SUCCESS,
@@ -35,6 +39,12 @@ export function* authGetCurrentUserFailureSaga() {
       // TODO: dispatch push alert action
       // eslint-disable-next-line no-console
       yield console.log(error.response);
+    } else if (
+      error.response
+      && error.response.status === 401
+      && localStorage.getItem('refreshToken')
+    ) {
+      yield put(authGetAccessTokenPending());
     }
   });
 }
