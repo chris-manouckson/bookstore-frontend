@@ -28,6 +28,7 @@
     border-radius: 8px;
     color: $color-1;
     background-color: $color-5;
+    cursor: pointer;
 
     &:disabled {
       opacity: 0.5;

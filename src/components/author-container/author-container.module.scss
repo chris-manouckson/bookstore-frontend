@@ -12,7 +12,6 @@
     height: 360px;
     margin: 12px;
     padding: 32px;
-    box-shadow: 0 0 8px 0 $color-2;
 
     // TODO: use screen breakpoint variables
     @media (max-width: 576px) {
@@ -36,6 +35,17 @@
       margin-right: auto;
     }
 
+    &Avatar {
+      display: flex;
+      flex: 1;
+      height: 240px;
+      margin-bottom: 24px;
+
+      &_image {
+        filter: invert(0.5);
+      }
+    }
+
     &_fullName {
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -51,22 +61,6 @@
     &_link {
       text-decoration: none;
       color: $color-2;
-    }
-
-    &Address {
-      font-style: normal;
-
-      &_email,
-      &_phone {
-        display: block;
-        width: 240px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-weight: 600;
-        text-decoration: none;
-        color: $color-2;
-      }
     }
   }
 }

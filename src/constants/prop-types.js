@@ -37,6 +37,7 @@ const propTypes = {
     lastName: PropTypes.string,
     email: PropTypes.string,
     phone: PropTypes.string,
+    avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
   }),
 };
 
