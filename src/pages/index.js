@@ -2,6 +2,7 @@ export { default as Home } from './home';
 export { default as Login } from './login';
 export { default as Signup } from './signup';
 export { default as Profile } from './profile';
+export { default as Logout } from './logout';
 export { default as Books } from './books';
 export { default as BookDetails } from './book-details';
 export { default as Authors } from './authors';

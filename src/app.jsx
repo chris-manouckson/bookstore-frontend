@@ -6,6 +6,7 @@ import {
   Login,
   Signup,
   Profile,
+  Logout,
   Books,
   BookDetails,
   Authors,
@@ -20,6 +21,7 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/profile" component={Profile} />
+      <Route exact path="/logout" component={Logout} />
       <Route exact path="/books" component={Books} />
       <Route exact path="/books/:bookId" component={BookDetails} />
       <Route exact path="/authors" component={Authors} />

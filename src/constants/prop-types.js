@@ -10,8 +10,8 @@ const propTypes = {
   currentUser: PropTypes.oneOfType([
     PropTypes.oneOf([null]),
     PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
+      first_name: PropTypes.string.isRequired,
+      last_name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
     }),
   ]),

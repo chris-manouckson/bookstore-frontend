@@ -46,24 +46,19 @@ const LayoutHeader = (props) => {
 
       <section className={cx('layoutHeader_section')}>
         {userIsLoggedIn ? (
-          <div className={cx('layoutHeaderProfile')}>
-            <button className={cx('layoutHeaderProfile_dropdown-toggle')} type="button">
-              {currentUser.email}
-            </button>
-            <div className={cx('layoutHeaderProfileDropdown')}>
-              <Link
-                to="/profile"
-                className={cx('layoutHeaderProfileDropdown_item')}
-              >
-                Profile
-              </Link>
-              <Link
-                to="/logout"
-                className={cx('layoutHeaderProfileDropdown_item', 'layoutHeaderProfileDropdown_item__danger')}
-              >
-                Log out
-              </Link>
-            </div>
+          <div className={cx('layoutHeaderLinks')}>
+            <Link
+              to="/profile"
+              className={cx('layoutHeaderLinks_link')}
+            >
+              Profile
+            </Link>
+            <Link
+              to="/logout"
+              className={cx('layoutHeaderLinks_link', 'layoutHeaderLinks_link__danger')}
+            >
+              Log out
+            </Link>
           </div>
         ) : (
           <div className={cx('layoutHeaderAuth')}>

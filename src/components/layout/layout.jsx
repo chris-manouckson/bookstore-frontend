@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 
+import { authGetCurrentUserPending } from '../../store/actions';
+import { selectAuthCurrentUser } from '../../store/selectors';
 import { propTypes } from '../../constants';
 
 import LayoutHeader from './layout-header';
@@ -17,9 +20,17 @@ const Layout = (props) => {
     isFooterPresent,
   } = props;
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authGetCurrentUserPending());
+  }, [dispatch]);
+
+  const currentUser = useSelector(selectAuthCurrentUser);
+
   return (
     <div className={cx('layout')}>
-      {isHeaderPresent && <LayoutHeader />}
+      {isHeaderPresent && <LayoutHeader currentUser={currentUser} />}
       {children}
       {isFooterPresent && <LayoutFooter />}
     </div>

@@ -20,6 +20,7 @@ import {
   authGetCurrentUserSuccessSaga,
   authGetCurrentUserFailureSaga,
 } from './auth-get-current-user';
+import { authLogoutSaga } from './auth-logout';
 
 export default function* () {
   yield all([
@@ -35,5 +36,6 @@ export default function* () {
     authGetCurrentUserPendingSaga(),
     authGetCurrentUserSuccessSaga(),
     authGetCurrentUserFailureSaga(),
+    authLogoutSaga(),
   ]);
 }

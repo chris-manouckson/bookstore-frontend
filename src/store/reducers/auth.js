@@ -2,10 +2,11 @@ import * as actionTypes from '../action-types/auth';
 import { createRequestStatus } from '../../utils';
 
 const initialState = {
+  currentUser: null,
   signupRequestStatus: createRequestStatus(),
   getAccessTokenRequestStatus: createRequestStatus(),
   loginRequestStatus: createRequestStatus(),
-  // getCurrentUserStatus: createRequestStatus(),
+  getCurrentUserRequestStatus: createRequestStatus(),
 };
 
 const auth = (state = initialState, action) => {
@@ -57,6 +58,26 @@ const auth = (state = initialState, action) => {
         ...state,
         loginRequestStatus: createRequestStatus({ error: action.error }),
       };
+
+    case actionTypes.AUTH_GET_CURRENT_USER_PENDING:
+      return {
+        ...state,
+        getCurrentUserRequestStatus: createRequestStatus({ isLoading: true }),
+      };
+    case actionTypes.AUTH_GET_CURRENT_USER_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload.user,
+        getCurrentUserRequestStatus: createRequestStatus(),
+      };
+    case actionTypes.AUTH_GET_CURRENT_USER_FAILURE:
+      return {
+        ...state,
+        getCurrentUserRequestStatus: createRequestStatus({ error: action.error }),
+      };
+
+    case actionTypes.AUTH_LOGOUT:
+      return initialState;
 
     default:
       return state;
