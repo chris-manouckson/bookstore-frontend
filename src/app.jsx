@@ -9,8 +9,8 @@ import {
   Logout,
   Books,
   BookDetails,
-  Authors,
-  AuthorDetails,
+  Users,
+  UserDetails,
   NotFound,
 } from './pages';
 
@@ -24,8 +24,8 @@ const App = () => (
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/books" component={Books} />
       <Route exact path="/books/:bookId" component={BookDetails} />
-      <Route exact path="/authors" component={Authors} />
-      <Route exact path="/authors/:authorId" component={AuthorDetails} />
+      <Route exact path="/users" component={Users} />
+      <Route exact path="/users/:userId" component={UserDetails} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

@@ -10,7 +10,7 @@ const cx = classnames.bind(styles);
 
 const links = [
   { to: '/books', label: 'Books' },
-  { to: '/authors', label: 'Authors' },
+  { to: '/users', label: 'Users' },
 ];
 
 const LayoutHeader = (props) => {

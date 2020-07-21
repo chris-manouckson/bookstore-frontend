@@ -3,17 +3,17 @@ import classnames from 'classnames/bind';
 
 import Layout from '../../components/layout';
 import SearchField from '../../components/search-field';
-import AuthorContainer from '../../components/author-container';
-import authorsMock from '../../mocks/authors-mock';
+import UserContainer from '../../components/user-container';
+import usersMock from '../../mocks/users-mock';
 
-import styles from './authors.module.scss';
+import styles from './users.module.scss';
 
 const cx = classnames.bind(styles);
 
-const Authors = () => {
+const Users = () => {
   const [searchText, setSearchText] = useState('');
   // TODO: replace mock with data got from back-end API response
-  const [authors] = useState(authorsMock);
+  const [users] = useState(usersMock);
 
   const handleChangeSearchField = useCallback((value) => {
     setSearchText(value);
@@ -22,20 +22,20 @@ const Authors = () => {
 
   return (
     <Layout>
-      <div className={cx('authors')}>
-        <h1 className={cx('authors_title')}>Authors</h1>
+      <div className={cx('users')}>
+        <h1 className={cx('users_title')}>Users</h1>
 
-        <div className={cx('authors_searchFieldContainer')}>
+        <div className={cx('users_searchFieldContainer')}>
           <SearchField
             value={searchText}
             onChange={handleChangeSearchField}
           />
         </div>
 
-        <AuthorContainer authors={authors} />
+        <UserContainer users={users} />
       </div>
     </Layout>
   );
 };
 
-export default Authors;
+export default Users;

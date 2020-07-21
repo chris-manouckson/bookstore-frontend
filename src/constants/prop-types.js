@@ -33,8 +33,8 @@ const propTypes = {
       }),
     ),
   }),
-  // INFO: author related prop types
-  author: PropTypes.shape({
+  // INFO: user related prop types
+  user: PropTypes.shape({
     id: PropTypes.number,
     firstName: PropTypes.string,
     lastName: PropTypes.string,

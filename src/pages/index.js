@@ -5,6 +5,6 @@ export { default as Profile } from './profile';
 export { default as Logout } from './logout';
 export { default as Books } from './books';
 export { default as BookDetails } from './book-details';
-export { default as Authors } from './authors';
-export { default as AuthorDetails } from './author-details';
+export { default as Users } from './users';
+export { default as UserDetails } from './user-details';
 export { default as NotFound } from './not-found';

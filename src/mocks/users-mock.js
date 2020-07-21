@@ -1,4 +1,4 @@
-const athorsMock = Array(10)
+const usersMock = Array(10)
   .fill({
     firstName: 'Daniel',
     lastName: 'Kaneman',
@@ -7,4 +7,4 @@ const athorsMock = Array(10)
   })
   .map((book) => ({ ...book, id: Math.floor(Math.random() * 1000) }));
 
-export default athorsMock;
+export default usersMock;
