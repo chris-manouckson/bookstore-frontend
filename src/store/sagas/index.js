@@ -21,6 +21,10 @@ import {
   authGetCurrentUserFailureSaga,
 } from './auth-get-current-user';
 import { authLogoutSaga } from './auth-logout';
+import {
+  booksGetAllPendingSaga,
+  booksGetAllFailureSaga,
+} from './books-get-all';
 
 export default function* () {
   yield all([
@@ -37,5 +41,7 @@ export default function* () {
     authGetCurrentUserSuccessSaga(),
     authGetCurrentUserFailureSaga(),
     authLogoutSaga(),
+    booksGetAllPendingSaga(),
+    booksGetAllFailureSaga(),
   ]);
 }

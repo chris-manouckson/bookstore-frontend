@@ -19,16 +19,19 @@ const propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    isbn: PropTypes.number,
+    isbn: PropTypes.string.isRequired,
     description: PropTypes.string,
     prisce: PropTypes.shape({
       amount: PropTypes.number,
       // TODO: move currencies to constants
       currency: PropTypes.oneOf(['$']),
     }),
-    author: PropTypes.oneOfType([
-      PropTypes.oneOf([null]),
-    ]),
+    authors: PropTypes.arrayOf(
+      PropTypes.shape({
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
+      }),
+    ),
   }),
   // INFO: author related prop types
   author: PropTypes.shape({
@@ -38,6 +41,19 @@ const propTypes = {
     email: PropTypes.string,
     phone: PropTypes.string,
     avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+  }),
+  // INFO: get all API related prop types
+  pagination: PropTypes.shape({
+    offset: PropTypes.number,
+    limit: PropTypes.number,
+    total: PropTypes.number,
+  }),
+  order: PropTypes.shape({
+    column_name: PropTypes.string,
+    direction: PropTypes.oneOf(['asc', 'desc']),
+  }),
+  search: PropTypes.shape({
+    text: PropTypes.string,
   }),
 };
 

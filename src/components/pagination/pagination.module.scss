@@ -1,0 +1,99 @@
+@import '../../styles/global.scss';
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  margin: 24px auto;
+
+  &PreviousLabel,
+  &NextLabel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    list-style-type: none;
+    background-color: $color-4;
+    color: $color-1;
+    cursor: pointer;
+    
+    &_link {
+      padding: 12px 0;
+    }
+  }
+
+  &PreviousLabel {
+    margin-right: 48px;
+
+    &_link {
+      padding-left: 32px;
+      padding-right: 18px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      border: 1px solid $color-1;
+      border-top: 1px solid transparent;
+      border-right: 1px solid transparent;
+      pointer-events: none;
+    }
+  }
+
+  &NextLabel {
+    justify-content: flex-end;
+    margin-left: 48px;
+
+    &_link {
+      padding-right: 32px;
+      padding-left: 18px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      border: 1px solid $color-1;
+      border-bottom: 1px solid transparent;
+      border-left: 1px solid transparent;
+      pointer-events: none;
+    }
+  }
+
+  &Page,
+  &Break {
+    width: 24px;
+    height: 24px;
+    list-style-type: none;
+    cursor: pointer;
+
+    &_link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      outline: none;
+
+      &__active {
+        border: 2px solid $color-4;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  &_disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

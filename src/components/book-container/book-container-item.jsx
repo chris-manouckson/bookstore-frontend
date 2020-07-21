@@ -14,7 +14,9 @@ const BookContainerItem = (props) => {
   return (
     <div className={cx('bookContainerItem')}>
       <p className={cx('bookContainerItem_author')}>
-        {book.author ? `${book.author.firstName} ${book.author.lastName}` : 'Unknown'}
+        {book.authors
+          .map((author) => `${author.first_name} ${author.last_name}`)
+          .join(', ')}
       </p>
       <h3 className={cx('bookContainerItem_title')}>
         <Link to={`books/${book.id}`} className={cx('bookContainerItem_link')}>
