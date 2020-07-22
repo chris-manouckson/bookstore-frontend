@@ -6,3 +6,5 @@ export { default as requestAuthLogin } from './request-auth-login';
 export { default as requestAuthGetCurrentUser } from './request-auth-get-current-user';
 
 export { default as requestBooksGetAll } from './request-books-get-all';
+
+export { default as requestUsersGetAll } from './request-users-get-all';

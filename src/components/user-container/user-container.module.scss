@@ -9,6 +9,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 360px;
     margin: 12px;
     padding: 32px;
@@ -37,9 +38,11 @@
 
     &Avatar {
       display: flex;
+      justify-content: center;
       flex: 1;
       height: 240px;
       margin-bottom: 24px;
+      width: 100%;
 
       &_image {
         filter: invert(0.5);

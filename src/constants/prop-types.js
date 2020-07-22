@@ -8,12 +8,12 @@ const propTypes = {
   ]),
   // INFO: auth related prop types
   currentUser: PropTypes.oneOfType([
-    PropTypes.oneOf([null]),
     PropTypes.shape({
       first_name: PropTypes.string.isRequired,
       last_name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
     }),
+    PropTypes.oneOf([null]),
   ]),
   // INFO: book related prop types
   book: PropTypes.shape({
@@ -36,8 +36,8 @@ const propTypes = {
   // INFO: user related prop types
   user: PropTypes.shape({
     id: PropTypes.number,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
     email: PropTypes.string,
     phone: PropTypes.string,
     avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),

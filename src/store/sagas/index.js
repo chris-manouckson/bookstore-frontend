@@ -25,6 +25,10 @@ import {
   booksGetAllPendingSaga,
   booksGetAllFailureSaga,
 } from './books-get-all';
+import {
+  usersGetAllPendingSaga,
+  usersGetAllFailureSaga,
+} from './users-get-all';
 
 export default function* () {
   yield all([
@@ -43,5 +47,7 @@ export default function* () {
     authLogoutSaga(),
     booksGetAllPendingSaga(),
     booksGetAllFailureSaga(),
+    usersGetAllPendingSaga(),
+    usersGetAllFailureSaga(),
   ]);
 }
