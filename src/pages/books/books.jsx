@@ -8,6 +8,7 @@ import { booksGetAllPending } from '../../store/actions';
 import {
   selectBooksAll,
   selectBooksPagination,
+  selectBooksOrder,
   selectBooksSearch,
 } from '../../store/selectors';
 import Layout from '../../components/layout';
@@ -28,6 +29,7 @@ const Books = () => {
 
   const books = useSelector(selectBooksAll);
   const booksPagination = useSelector(selectBooksPagination);
+  const booksOrder = useSelector(selectBooksOrder);
   const booksSearch = useSelector(selectBooksSearch);
 
   const handleChangePage = useCallback((page) => {
@@ -38,7 +40,11 @@ const Books = () => {
     })}`);
   }, [location, history]);
 
-  const [search, setSearch] = useState(booksSearch.text);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    setSearch('');
+  }, []);
 
   const handleChangeSearchField = useCallback((value) => {
     setSearch(value);
@@ -53,7 +59,9 @@ const Books = () => {
   }, [location.search, history]);
 
   useEffect(() => {
-    const { page, order } = queryString.parse(location.search);
+    const currentQuery = queryString.parse(location.search);
+
+    const { page, order } = currentQuery;
 
     if (!page) {
       return;
@@ -61,15 +69,37 @@ const Books = () => {
 
     const nextOffset = (page - 1) * booksPagination.limit;
     const nextLimit = booksPagination.limit;
-    const nextOrder = order;
-    const nextSearch = search;
 
-    dispatch(booksGetAllPending(nextOffset, nextLimit, nextOrder, nextSearch));
+    const nextOrder = !Array.isArray(order) ? [order || 'id', booksOrder.direction] : order;
+    const isOrderChanged = booksOrder.column_name !== nextOrder[0]
+      || booksOrder.direction !== nextOrder[1];
+
+    const nextSearch = search === undefined ? booksSearch.text : search;
+    const isSearchChanged = booksSearch.text !== nextSearch;
+
+    const isPaginationChanged = nextOffset !== booksPagination.offset
+      || nextLimit !== booksPagination.limit;
+
+    if (isOrderChanged || isSearchChanged) {
+      dispatch(booksGetAllPending(0, 12, nextOrder, nextSearch));
+
+      history.replace(`/books?${queryString.stringify({ ...currentQuery, page: 1 })}`);
+
+      return;
+    }
+
+    if (isPaginationChanged) {
+      dispatch(booksGetAllPending(nextOffset, nextLimit, nextOrder, nextSearch));
+    }
   }, [
     location.search,
+    booksPagination.offset,
     booksPagination.limit,
+    booksOrder,
     search,
+    booksSearch,
     dispatch,
+    history,
   ]);
 
   return (
