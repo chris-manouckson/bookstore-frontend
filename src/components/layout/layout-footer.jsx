@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import styles from './layout.module.scss';
 
 const cx = classnames.bind(styles);
 
-const links = [
-  { to: '/login', text: 'Login' },
-  { to: '/signup', text: 'Signup' },
-];
+// const links = [
+//   { to: '/login', text: 'Login' },
+//   { to: '/signup', text: 'Signup' },
+// ];
 
 const LayoutFooter = () => (
   <footer className={cx('layoutFooter')}>
@@ -21,7 +21,7 @@ const LayoutFooter = () => (
 
     <section className={cx('layoutFooter_section')}>
       <div className={cx('layoutFooterLinkList')}>
-        {links.map((link) => (
+        {/* {links.map((link) => (
           <Link
             key={link.text}
             to={link.to}
@@ -29,7 +29,7 @@ const LayoutFooter = () => (
           >
             {link.text}
           </Link>
-        ))}
+        ))} */}
       </div>
     </section>
   </footer>
