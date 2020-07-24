@@ -26,6 +26,10 @@ import {
   booksGetAllFailureSaga,
 } from './books-get-all';
 import {
+  booksGetOnePendingSaga,
+  booksGetOneFailureSaga,
+} from './books-get-one';
+import {
   usersGetAllPendingSaga,
   usersGetAllFailureSaga,
 } from './users-get-all';
@@ -47,6 +51,8 @@ export default function* () {
     authLogoutSaga(),
     booksGetAllPendingSaga(),
     booksGetAllFailureSaga(),
+    booksGetOnePendingSaga(),
+    booksGetOneFailureSaga(),
     usersGetAllPendingSaga(),
     usersGetAllFailureSaga(),
   ]);

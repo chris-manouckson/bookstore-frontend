@@ -22,11 +22,14 @@
     font-size: $font-size-large-extra;
   }
   
-  &_author {
+  &Authors {
     margin-bottom: 24px;
-    font-size: $font-size-large;
-    opacity: 0.8;
-    color: $color-2;
+
+    &_author {
+      font-size: $font-size-large;
+      opacity: 0.8;
+      color: $color-2;
+    }
   }
 
   &_description {

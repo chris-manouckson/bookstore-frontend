@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
-import { simulateHttpRequest } from '../../utils';
-import bookDetailsMock from '../../mocks/book-details-mock';
+import { booksGetOnePending } from '../../store/actions';
+import {
+  selectRequestStatus,
+  selectBooksOne,
+} from '../../store/selectors';
+// import bookDetailsMock from '../../mocks/book-details-mock';
 import Layout from '../../components/layout';
 
 import styles from './book-details.module.scss';
@@ -13,25 +18,15 @@ const cx = classnames.bind(styles);
 const BookDetails = () => {
   const { bookId } = useParams();
 
-  // TODO: select state from store via selector
-  const [bookDetails, setBookDetails] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const { isLoading } = useSelector(selectRequestStatus('books', 'getOne'));
+
+  const bookDetails = useSelector(selectBooksOne);
 
   useEffect(() => {
-    // TODO: dispatch 'BOOKS_GET_ONE_PENDING' action
-    (async () => {
-      setIsLoading(true);
-      const payload = await simulateHttpRequest(bookDetailsMock);
-      setBookDetails(payload);
-      setIsLoading(false);
-    })();
-  }, []);
-
-  useEffect(() => {
-    // TODO: dispatch get book details by book id
-    // eslint-disable-next-line no-console
-    console.log('book id:', bookId);
-  }, [bookId]);
+    dispatch(booksGetOnePending(bookId));
+  }, [dispatch, bookId]);
 
   return (
     <Layout>
@@ -41,14 +36,22 @@ const BookDetails = () => {
             &larr; Back to books
           </Link>
         </div>
-        {!isLoading && Object.keys(bookDetails).length > 0 ? (
+        {!isLoading && bookDetails ? (
           <>
             <h1 className={cx('bookDetails_title')}>
               {bookDetails.title}
             </h1>
-            <span className={cx('bookDetails_author')}>
-              {`${bookDetails.author.firstName} ${bookDetails.author.lastName}`}
-            </span>
+            <div className={cx('bookDetailsAuthors')}>
+              {bookDetails.authors
+                .map((author, authorIndex) => (
+                  // TODO: replace with link to corresponding author page
+                  <span key={author.id} className={cx('bookDetailsAuthors_author')}>
+                    {`${author.first_name} ${author.last_name}${
+                      authorIndex !== bookDetails.authors.length - 1 ? ', ' : ''
+                    }`}
+                  </span>
+                ))}
+            </div>
 
             <div className={cx('bookDetails_description')}>
               <section className={cx('bookDetails_price')}>
