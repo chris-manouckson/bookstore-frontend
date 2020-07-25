@@ -8,3 +8,4 @@ export * from './books-get-all';
 export * from './books-get-one';
 
 export * from './users-get-all';
+export * from './users-get-one';

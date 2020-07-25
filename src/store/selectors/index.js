@@ -12,3 +12,4 @@ export { default as selectUsersAll } from './select-users-all';
 export { default as selectUsersPagination } from './select-users-pagination';
 export { default as selectUsersOrder } from './select-users-order';
 export { default as selectUsersSearch } from './select-users-search';
+export { default as selectUsersOne } from './select-users-one';

@@ -3,6 +3,7 @@ import { createRequestStatus } from '../../utils';
 
 const initialState = {
   all: [],
+  one: null,
   pagination: {
     offset: 0,
     limit: 12,
@@ -17,6 +18,7 @@ const initialState = {
   },
 
   getAllRequestStatus: createRequestStatus({}),
+  getOneRequestStatus: createRequestStatus({}),
 };
 
 const users = (state = initialState, action) => {
@@ -39,6 +41,23 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         getAllRequestStatus: createRequestStatus({ error: action.error }),
+      };
+
+    case actionTypes.USERS_GET_ONE_PENDING:
+      return {
+        ...state,
+        getOneRequestStatus: createRequestStatus({ isLoading: true }),
+      };
+    case actionTypes.USERS_GET_ONE_SUCCESS:
+      return {
+        ...state,
+        one: action.payload.user,
+        getOneRequestStatus: createRequestStatus(),
+      };
+    case actionTypes.USERS_GET_ONE_FAILURE:
+      return {
+        ...state,
+        getOneRequestStatus: createRequestStatus({ error: action.error }),
       };
 
     default:

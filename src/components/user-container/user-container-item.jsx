@@ -23,7 +23,7 @@ const UserContainerItem = (props) => {
       </section>
       <section className={cx('userContainerItemDetails')}>
         <h3 className={cx('userContainerItem_fullName')}>
-          <Link to={`user/${user.id}`} className={cx('userContainerItem_link')}>
+          <Link to={`users/${user.id}`} className={cx('userContainerItem_link')}>
             {`${user.first_name} ${user.last_name}`}
           </Link>
         </h3>

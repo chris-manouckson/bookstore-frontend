@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
-import { simulateHttpRequest } from '../../utils';
-import userDetailsMock from '../../mocks/user-details-mock';
+import { usersGetOnePending } from '../../store/actions';
+import { selectUsersOne, selectRequestStatus } from '../../store/selectors';
 import Layout from '../../components/layout';
+// import userDetailsMock from '../../mocks/user-details-mock';
 
+import UserDetailsPersonal from './user-details-personal';
 import styles from './user-details.module.scss';
 
 const cx = classnames.bind(styles);
@@ -13,24 +16,15 @@ const cx = classnames.bind(styles);
 const UserDetails = () => {
   const { userId } = useParams();
 
-  // TODO: select state from store via selector
-  const [userDetails, setUserDetails] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const userDetails = useSelector(selectUsersOne);
+
+  const { isLoading: areDetailsLoading } = useSelector(selectRequestStatus('users', 'getOne'));
 
   useEffect(() => {
-    // TODO: dispatch 'USERS_GET_ONE_PENDING' action
-    (async () => {
-      setIsLoading(true);
-      const payload = await simulateHttpRequest(userDetailsMock);
-      setUserDetails(payload);
-      setIsLoading(false);
-    })();
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('user id:', userId);
-  }, [userId]);
+    dispatch(usersGetOnePending(userId));
+  }, [dispatch, userId]);
 
   return (
     <Layout>
@@ -40,36 +34,16 @@ const UserDetails = () => {
             &larr; Back to users
           </Link>
         </div>
-        {!isLoading && Object.keys(userDetails).length > 0 ? (
-          <>
-            <h1 className={cx('userDetails_fullName')}>
-              {`${userDetails.firstName} ${userDetails.lastName}`}
-            </h1>
-
-            <address className={cx('userDetailsAddress')}>
-              Email:
-              {' '}
-              <a
-                href={`mailto:${userDetails.email}`}
-                className={cx('userDetailsAddress_email')}
-              >
-                {userDetails.email}
-              </a>
-              <br />
-              Phone:
-              {' '}
-              <a
-                href={`tel:${userDetails.phone}`}
-                className={cx('userDetailsAddress_phone')}
-              >
-                {userDetails.phone}
-              </a>
-              <br />
-            </address>
-          </>
+        {!areDetailsLoading && userDetails ? (
+          <UserDetailsPersonal
+            firstName={userDetails.first_name}
+            lastName={userDetails.last_name}
+            email={userDetails.email}
+            phone={userDetails.phone}
+          />
         ) : (
           // TODO: replace with loader component
-          'Please wait'
+          'Please wait...'
         )}
       </div>
     </Layout>

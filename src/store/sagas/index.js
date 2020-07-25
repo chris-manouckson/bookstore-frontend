@@ -33,6 +33,10 @@ import {
   usersGetAllPendingSaga,
   usersGetAllFailureSaga,
 } from './users-get-all';
+import {
+  usersGetOnePendingSaga,
+  usersGetOneFailureSaga,
+} from './users-get-one';
 
 export default function* () {
   yield all([
@@ -55,5 +59,7 @@ export default function* () {
     booksGetOneFailureSaga(),
     usersGetAllPendingSaga(),
     usersGetAllFailureSaga(),
+    usersGetOnePendingSaga(),
+    usersGetOneFailureSaga(),
   ]);
 }
