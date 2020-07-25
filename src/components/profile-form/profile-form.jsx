@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 
 import { inputTypes } from '../../constants';
@@ -8,14 +9,29 @@ import styles from './profile-form.module.scss';
 
 const cx = classnames.bind(styles);
 
-const LoginForm = () => {
-  // TODO: handle toggle edit mode
+const ProfileForm = (props) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+  } = props;
 
-  const [formData] = useState({
-    email: { value: '', isValid: null, errorMessage: '' },
+  const [formData, setFormData] = useState({
     firstName: { value: '', isValid: null, errorMessage: '' },
     lastName: { value: '', isValid: null, errorMessage: '' },
+    email: { value: '', isValid: null, errorMessage: '' },
+    phone: { value: '', isValid: null, errorMessage: '' },
   });
+
+  useEffect(() => {
+    setFormData({
+      firstName: { value: firstName, isValid: null, errorMessage: '' },
+      lastName: { value: lastName, isValid: null, errorMessage: '' },
+      email: { value: email, isValid: null, errorMessage: '' },
+      phone: { value: phone, isValid: null, errorMessage: '' },
+    });
+  }, [firstName, lastName, email, phone]);
 
   const handleChange = useCallback((name, value, event) => {
     event.preventDefault();
@@ -65,4 +81,11 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+ProfileForm.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+};
+
+export default ProfileForm;
