@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
@@ -11,6 +11,12 @@ const cx = classnames.bind(styles);
 const links = [
   { to: '/books', label: 'Books' },
   { to: '/users', label: 'Users' },
+  { to: '/signup', label: 'Sign up', isAuthRequired: false },
+  { to: '/login', label: 'Log in', isAuthRequired: false },
+  { to: '/profile', label: 'Profile', isAuthRequired: true },
+  {
+    to: '/logout', label: 'Log out', isAuthRequired: true, isDanger: true,
+  },
 ];
 
 const LayoutHeader = (props) => {
@@ -18,64 +24,40 @@ const LayoutHeader = (props) => {
 
   const location = useLocation();
 
-  const userIsLoggedIn = useMemo(() => !!currentUser, [currentUser]);
+  const isUserLoggedIn = useMemo(() => !!currentUser, [currentUser]);
+
+  const currentLinks = useMemo(() => links.filter(
+    (link) => link.isAuthRequired === undefined || link.isAuthRequired === isUserLoggedIn,
+  ), [isUserLoggedIn]);
 
   return (
     <header className={cx('layoutHeader')}>
       <section className={cx('layoutHeader_section')}>
         <div className={cx('layoutHeaderBrand')}>
           <Link to="/" className={cx('layoutHeaderBrand_name')}>
-            BOOKSTORE
+            BOOK
+            <span className={cx('layoutHeaderBrand_highlight')}>STORE</span>
           </Link>
-        </div>
-
-        <div className={cx('layoutHeaderLinks')}>
-          {links.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={cx('layoutHeaderLinks_link', {
-                layoutHeaderLinks_link__active: location.pathname === link.to,
-              })}
-            >
-              {link.label}
-            </Link>
-          ))}
         </div>
       </section>
 
       <section className={cx('layoutHeader_section')}>
-        {userIsLoggedIn ? (
-          <div className={cx('layoutHeaderLinks')}>
-            <Link
-              to="/profile"
-              className={cx('layoutHeaderLinks_link')}
-            >
-              Profile
-            </Link>
-            <Link
-              to="/logout"
-              className={cx('layoutHeaderLinks_link', 'layoutHeaderLinks_link__danger')}
-            >
-              Log out
-            </Link>
-          </div>
-        ) : (
-          <div className={cx('layoutHeaderAuth')}>
-            <Link
-              to="/login"
-              className={cx('layoutHeaderAuth_link')}
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className={cx('layoutHeaderAuth_link')}
-            >
-              Signup
-            </Link>
-          </div>
-        )}
+        <div className={cx('layoutHeaderLinks')}>
+          {currentLinks.map((link, linkIndex) => (
+            <Fragment key={link.to}>
+              <Link
+                to={link.to}
+                className={cx('layoutHeaderLinks_link', {
+                  layoutHeaderLinks_link__active: location.pathname === link.to,
+                  layoutHeaderLinks_link__danger: link.isDanger,
+                })}
+              >
+                {link.label}
+              </Link>
+              {linkIndex !== currentLinks.length - 1 && '|'}
+            </Fragment>
+          ))}
+        </div>
       </section>
     </header>
   );

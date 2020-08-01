@@ -8,7 +8,9 @@
 
   &_title {
     margin-bottom: 24px;
-    font-size: $font-size-large-extra;
-    text-align: center;
+    letter-spacing: 2.5px;
+    font-size: $font-size-large;
+    font-family: $font-family-title;
+    text-transform: uppercase;
   }
 }

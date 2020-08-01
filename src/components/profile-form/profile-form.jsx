@@ -41,6 +41,10 @@ const ProfileForm = (props) => {
     <form className={cx('profileForm')}>
       <h1 className={cx('profileForm_title')}>Profile</h1>
 
+      <div className={cx('profileFormAvatar')}>
+        {/* TODO: place avatar */}
+      </div>
+
       <div className={cx('profileFormInputContainer')}>
         <div className={cx('profileFormInputContainer_input', 'profileFormInputContainer_input__fullWidth')}>
           <TextField
@@ -54,7 +58,7 @@ const ProfileForm = (props) => {
             placeholder="Email"
           />
         </div>
-        <div className={cx('profileFormInputContainer_input')}>
+        <div className={cx('profileFormInputContainer_input', 'profileFormInputContainer_input__fullWidth')}>
           <TextField
             name="firstName"
             value={formData.firstName.value}
@@ -65,7 +69,7 @@ const ProfileForm = (props) => {
             placeholder="First name"
           />
         </div>
-        <div className={cx('profileFormInputContainer_input')}>
+        <div className={cx('profileFormInputContainer_input', 'profileFormInputContainer_input__fullWidth')}>
           <TextField
             name="lastName"
             value={formData.lastName.value}

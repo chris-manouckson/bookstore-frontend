@@ -7,21 +7,22 @@ $footer-height: 72px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   min-height: 100vh;
-  padding-top: $header-height;
   background-color: $color-1;
   font-family: $font-family-text;
 
   &Header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
     display: flex;
     justify-content: space-between;
     height: $header-height;
-    background-color: $color-4;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      width: 80%;
+    }
 
     &_section {
       display: flex;
@@ -40,15 +41,21 @@ $footer-height: 72px;
       align-items: center;
       height: 100%;
       margin-right: 24px;
+      letter-spacing: 2.5px;
 
       &_name {
         padding: 6px;
+        font-family: $font-family-title;
         font-size: $font-size-large;
-        font-weight: bold;
         border: 2px dashed $color-1;
         border-radius: 8px;
         text-decoration: none;
-        color: $color-1;
+        color: $color-2;
+      }
+      
+      &_highlight {
+        color: $color-4;
+        font-weight: bold;
       }
     }
 
@@ -60,86 +67,30 @@ $footer-height: 72px;
       &_link {
         margin: 0 12px;
         text-decoration: none;
-        color: $color-1;
+        color: $color-2;
   
         &__active {
           font-weight: bold;
         }
       }
     }
+  }
 
+  &Content {
+    flex: 1;
 
-    &Auth {
-      display: flex;
-      align-items: center;
-      height: 100%;
-
-      &_link {
-        margin-right: 24px;
-        font-size: $font-size-medium;
-        font-weight: bold;
-        text-decoration: none;
-        color: $color-1;
-
-        &:last-child {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 72px;
-          height: 40px;
-          margin-right: 0;
-          border: none;
-          border-radius: 12px;
-          color: $color-4;
-          background-color: $color-1;
-        }
-      }
+    @media (max-width: 1200px) {
+      width: 100%;
     }
-
-    &Profile {
-      position: relative;
-
-      &_dropdown-toggle {
-        max-width: 200px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: $font-size-medium;
-        font-family: $font-family-text;
-        font-weight: bold;
-        border: none;
-        color: $color-1;
-        background-color: transparent;
-        cursor: pointer;
-      }
-
-      &Dropdown {
-        position: absolute;
-        transform: translateY(28px);
-        right: 0;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $color-1;
-        box-shadow: 0 0 2px 0 $color-2;
-
-        &_item {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40px;
-          text-decoration: none;
-          color: $color-2;
-        }
-      }
+    @media (min-width: 1200px) {
+      width: 80%;
     }
   }
 
   &Footer {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     height: $footer-height;
     border-top: 1px solid $color-2;
     background-color: $color-2;

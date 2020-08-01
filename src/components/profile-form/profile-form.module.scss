@@ -2,23 +2,38 @@
 
 .profileForm {
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
-  width: 360px;
+  flex-wrap: wrap;
+  width: 100%;
   padding: 36px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px -4px $color-2;
 
   &_title {
+    width: 100%;
     margin-bottom: 24px;
     font-size: $font-size-large;
+    font-family: $font-family-title;
+    text-transform: uppercase;
     color: $color-2;
   }
 
-  &InputContainer {
+  &Avatar {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    margin-right: 24px;
+    background-color: $color-3;
+  }
+  
+  &InputContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
+    height: 180px;
 
     &_input {
       width: calc(50% - 6px);

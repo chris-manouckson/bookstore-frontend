@@ -17,7 +17,8 @@ const initialState = {
     text: '',
   },
 
-  getAllRequestStatus: createRequestStatus({}),
+  getAllRequestStatus: createRequestStatus(),
+  getOneRequestStatus: createRequestStatus(),
 };
 
 const books = (state = initialState, action) => {

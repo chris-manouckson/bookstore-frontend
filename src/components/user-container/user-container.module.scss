@@ -9,10 +9,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 360px;
     margin: 12px;
-    padding: 32px;
+    padding: 12px;
+    color: $color-2;
+    background-color: $color-1;
+    box-shadow: 0 0 4px 0 $color-2;
 
     // TODO: use screen breakpoint variables
     @media (max-width: 576px) {
@@ -37,33 +39,55 @@
     }
 
     &Avatar {
-      display: flex;
-      justify-content: center;
       flex: 1;
-      height: 240px;
-      margin-bottom: 24px;
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      background-color: $color-3;
 
       &_image {
-        filter: invert(0.5);
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: $color-3;
+        }
       }
     }
 
-    &_fullName {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 24px;
-      text-align: center;
-      letter-spacing: 2px;
-      font-size: $font-size-large;
-      font-family: $font-family-title;
+    &Info {
+      &_fullName {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 4px;
+        font-size: $font-size-medium;
+        font-family: $font-family-title;
+        font-weight: bold;
+      }
+
+      &_link {
+        color: $color-2;
+        text-decoration: none;
+      }
+
+      &_bookCount {
+        margin-bottom: 4px;
+        font-size: $font-size-small;
+        opacity: 0.6;
+        color: $color-2;
+      }
     }
 
-    &_link {
-      text-decoration: none;
-      color: $color-2;
-    }
   }
 }

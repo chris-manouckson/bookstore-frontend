@@ -13,24 +13,27 @@ const BookContainerItem = (props) => {
 
   return (
     <div className={cx('bookContainerItem')}>
-      <p className={cx('bookContainerItem_author')}>
-        {book.authors
-          .map((author) => `${author.first_name} ${author.last_name}`)
-          .join(', ')}
-      </p>
-      <h3 className={cx('bookContainerItem_title')}>
-        <Link to={`books/${book.id}`} className={cx('bookContainerItem_link')}>
-          {book.title}
-        </Link>
-      </h3>
+      <div className={cx('bookContainerItemCover')}>
+        {/* TODO: place cover image */}
+      </div>
 
-      <p className={cx('bookContainerItem_description')}>
-        {book.description || ''}
-      </p>
+      <div className={cx('bookContainerItemInfo')}>
+        <section className={cx('bookContainerItemInfo_title')}>
+          <Link to={`books/${book.id}`} className={cx('bookContainerItemInfo_link')}>
+            {book.title}
+          </Link>
+        </section>
 
-      <span className={cx('bookContainerItem_price')}>
-        {book.price ? `${book.price.currency} ${book.price.amount}` : ''}
-      </span>
+        <section className={cx('bookContainerItemInfo_author')}>
+          {book.authors
+            .map((author) => `${author.first_name} ${author.last_name}`)
+            .join(', ')}
+        </section>
+
+        <section className={cx('bookContainerItemInfo_price')}>
+          {book.price ? `${book.price.currency} ${book.price.amount}` : ''}
+        </section>
+      </div>
     </div>
   );
 };

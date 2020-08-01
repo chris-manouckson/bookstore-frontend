@@ -31,7 +31,9 @@ const Layout = (props) => {
   return (
     <div className={cx('layout')}>
       {isHeaderPresent && <LayoutHeader currentUser={currentUser} />}
-      {children}
+      <main className={cx('layoutContent')}>
+        {children}
+      </main>
       {isFooterPresent && <LayoutFooter />}
     </div>
   );
