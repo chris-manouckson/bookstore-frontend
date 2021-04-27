@@ -1,0 +1,78 @@
+@import '../../styles/global.scss';
+
+.bookContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &Item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+    margin: 12px;
+    padding: 12px;
+    color: $color-2;
+    background-color: $color-1;
+    box-shadow: 0 0 4px 0 $color-2;
+
+    // TODO: use screen breakpoint variables
+    @media (max-width: 576px) {
+      width: 100%;
+      margin: 12px 0;
+    }
+    @media (min-width: 576px) and (max-width: 768px) {
+      width: calc(50% - 24px);
+    }
+    @media (min-width: 769px) and (max-width: 1200px) {
+      width: calc(100% / 3 - 24px);
+    }
+    @media (min-width: 1201px) and (max-width: 1800px) {
+      width: calc(25% - 24px);
+    }
+    @media (min-width: 1801px) {
+      width: 360px;
+    }
+
+    &:last-child {
+      margin-right: auto;
+    }
+
+    &Cover {
+      flex: 1;
+      margin-bottom: 12px;
+      background-color: $color-3;
+    }
+
+    &Info {
+      &_title {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 4px;
+        font-size: $font-size-medium;
+        font-family: $font-family-title;
+        font-weight: bold;
+      }
+
+      &_link {
+        color: $color-2;
+        text-decoration: none;
+      }
+
+      &_author,
+      &_price {
+        margin-bottom: 4px;
+        font-size: $font-size-small;
+        opacity: 0.6;
+        color: $color-2;
+      }
+
+      &_price {
+        font-weight: bold;
+        color: $color-4;
+      }
+    }
+  }
+}

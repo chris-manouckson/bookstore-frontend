@@ -1,6 +1,121 @@
 @import '../../styles/global.scss';
 
+$header-height: 72px;
+$footer-height: 72px;
+
 .layout {
-  // TODO: write appropriate
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
   background-color: $color-1;
+  font-family: $font-family-text;
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    height: $header-height;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      width: 80%;
+    }
+
+    &_section {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      padding: 0 24px;
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+
+    &Brand {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin-right: 24px;
+      letter-spacing: 2.5px;
+
+      &_name {
+        padding: 6px;
+        font-family: $font-family-title;
+        font-size: $font-size-large;
+        border: 2px dashed $color-1;
+        border-radius: 8px;
+        text-decoration: none;
+        color: $color-2;
+      }
+      
+      &_highlight {
+        color: $color-4;
+        font-weight: bold;
+      }
+    }
+
+    &Links {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &_link {
+        margin: 0 12px;
+        text-decoration: none;
+        color: $color-2;
+  
+        &__active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &Content {
+    flex: 1;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      width: 80%;
+    }
+  }
+
+  &Footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: $footer-height;
+    border-top: 1px solid $color-2;
+    background-color: $color-2;
+
+    &_section {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 24px;
+    }
+
+    &CopyRight {
+      color: $color-1;
+    }
+
+    &LinkList {
+      &_item {
+        margin-right: 24px;
+        text-decoration: none;
+        color: $color-1;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }

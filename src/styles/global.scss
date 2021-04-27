@@ -7,20 +7,20 @@ $font-size-large-extra: 72px;
 
 // INFO: color scheme
 $color-1: #FBFBFB;
-$color-2: #2E2532;
-$color-3: #2E2532;
-$color-4: #9E4770;
-$color-5: #631D76;
+$color-2: #252525;
+$color-3: #f7f4f0;
+$color-4: #ff9700;
 
 // INFO: font families
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poiret+One&display=swap');
 
-$font-family-title: 'Black Han Sans', sans-serif;
-$font-family-text: 'Noto Sans', sans-serif;
+$font-family-title: 'Poiret One', cursive;
+$font-family-text: 'Open Sans', sans-serif;
 
 // INFO: overall styles
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: $font-family-text;
 }

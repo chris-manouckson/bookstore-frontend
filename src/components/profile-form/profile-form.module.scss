@@ -1,0 +1,46 @@
+@import '../../styles/global.scss';
+
+.profileForm {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 36px;
+
+  &_title {
+    width: 100%;
+    margin-bottom: 24px;
+    font-size: $font-size-large;
+    font-family: $font-family-title;
+    text-transform: uppercase;
+    color: $color-2;
+  }
+
+  &Avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    margin-right: 24px;
+    background-color: $color-3;
+  }
+  
+  &InputContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 180px;
+
+    &_input {
+      width: calc(50% - 6px);
+
+      &__fullWidth {
+        width: 100%;
+      }
+    }
+  }
+}

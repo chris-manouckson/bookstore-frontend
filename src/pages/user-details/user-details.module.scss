@@ -1,0 +1,42 @@
+@import '../../styles/global.scss';
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px;
+
+  &LinkContainer {
+    margin-bottom: 12px;
+
+    &_back {
+      font-size: $font-size-medium;
+      font-weight: 600;
+      text-decoration: none;
+      color: $color-2;
+    }
+  }
+
+  &_fullName {
+    margin-bottom: 12px;
+    font-size: $font-size-large-extra;
+  }
+  
+  &_author {
+    margin-bottom: 24px;
+    font-size: $font-size-large;
+    opacity: 0.8;
+    color: $color-2;
+  }
+
+  &Address {
+    font-style: normal;
+
+    &_email,
+    &_phone {
+      font-weight: 600;
+      text-decoration: none;
+      color: $color-2;
+    }
+  }
+}

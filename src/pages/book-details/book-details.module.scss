@@ -1,0 +1,45 @@
+@import '../../styles/global.scss';
+
+.bookDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px;
+
+  &LinkContainer {
+    margin-bottom: 12px;
+
+    &_back {
+      font-size: $font-size-medium;
+      font-weight: 600;
+      text-decoration: none;
+      color: $color-2;
+    }
+  }
+
+  &_title {
+    margin-bottom: 12px;
+    font-size: $font-size-large-extra;
+  }
+  
+  &Authors {
+    margin-bottom: 24px;
+
+    &_author {
+      font-size: $font-size-large;
+      opacity: 0.8;
+      color: $color-2;
+    }
+  }
+
+  &_description {
+    padding: 24px 0;
+    border-top: 1px solid $color-2;
+  }
+
+  &_price {
+    margin-bottom: 12px;
+    font-size: $font-size-medium;
+    font-weight: bold;
+  }
+}
